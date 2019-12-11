@@ -16,6 +16,9 @@ class LoginVC: UIViewController {
     var emailHeightConstraint: NSLayoutConstraint?
     var passwordFieldHeightAnchor: NSLayoutConstraint?
     
+    // login viewmodel
+    let loginViewModel = LoginVM()
+    
     let containerView: UIView = {
         
         let view = UIView()
@@ -102,6 +105,10 @@ class LoginVC: UIViewController {
         setupAnchors()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
     @objc func segmentValueDidChange() {
         
         let selectedIndex = segmentedController.selectedSegmentIndex
@@ -121,53 +128,24 @@ class LoginVC: UIViewController {
     
     @objc fileprivate func handleLoginRegister() {
         
-        segmentedController.selectedSegmentIndex == 0 ? handleLogin() : handlegister()
-    }
-    
-    fileprivate func handlegister() {
-        
-        guard let userName = nameField.text, let email = emailField.text, let password = passwordField.text else { return }
-        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+        segmentedController.selectedSegmentIndex == 0 ? loginViewModel.handleLogin(email: emailField.text, password: passwordField.text, completion: { (result) in
             
-            if error != nil {
-                print("Error creating user!", error?.localizedDescription)
-                return
-            }
-            print("Created account successfully!")
-            guard let userID = user?.user.uid else { return }
-            
-            //Successfully created the account
-            let ref = Database.database().reference(fromURL: GeneralConstants.firebaseurl)
-            let reference = ref.child("Users").child(userID)
-            let values = ["name" : userName, "email" : email]
-            
-            reference.updateChildValues(values, withCompletionBlock: { (error, ref) in
-                
-                if error != nil {
-                    print(error?.localizedDescription as Any)
-                    return
+            if let successResult = try? result.get() {
+                if successResult {
+                    self.dismiss(animated: true, completion: nil)
                 }
+                
+            }
+        }) : loginViewModel.handleRegister(email: emailField.text, userName: nameField.text, password: passwordField.text, completion: { (error, isSuccess) in
+            
+            if error == nil {
                 DispatchQueue.main.async {
                     self.dismiss(animated: true, completion: nil)
                 }
-                print("Saved successfully in database!")
-                
-            })
-        }
-    }
-    
-    
-    fileprivate func handleLogin() {
-        
-        guard let email = emailField.text, let password = passwordField.text else { return }
-        Auth.auth().signIn(withEmail: email, password: password) { [weak self] (user, error) in
-            
-            if error != nil {
-                print(error)
-                return
             }
-            self?.dismiss(animated: true, completion: nil)
-        }
+            // show a approriate alert with the error message
+            print(error?.localizedDescription as Any)
+        })
     }
 
     fileprivate func addSubViews() {

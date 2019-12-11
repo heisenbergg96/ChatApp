@@ -16,6 +16,7 @@
 		DF2BC53521DE2C260024AC21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF2BC53321DE2C260024AC21 /* LaunchScreen.storyboard */; };
 		DF2BC53E21DE316C0024AC21 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2BC53D21DE316C0024AC21 /* LoginVC.swift */; };
 		DF2BC54121DE32110024AC21 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2BC54021DE32110024AC21 /* UIColorExtension.swift */; };
+		DF301C6B239F99ED00DF9477 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF301C6A239F99ED00DF9477 /* LoginVM.swift */; };
 		DF469EC321ECCC1800F0CE50 /* GeneralConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF469EC221ECCC1800F0CE50 /* GeneralConstants.swift */; };
 		DF469EC521EE244100F0CE50 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF469EC421EE244100F0CE50 /* ContactsViewController.swift */; };
 		DF56A14E21E8DFBD00255D27 /* PageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF56A14D21E8DFBD00255D27 /* PageController.swift */; };
@@ -35,6 +36,7 @@
 		DF2BC53621DE2C260024AC21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF2BC53D21DE316C0024AC21 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		DF2BC54021DE32110024AC21 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		DF301C6A239F99ED00DF9477 /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
 		DF469EC221ECCC1800F0CE50 /* GeneralConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralConstants.swift; sourceTree = "<group>"; };
 		DF469EC421EE244100F0CE50 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		DF56A14D21E8DFBD00255D27 /* PageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageController.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				DF2BC52A21DE2C240024AC21 /* AppDelegate.swift */,
+				DF301C69239F99D900DF9477 /* ViewModel */,
 				DF210F2C22004F70004C1A6C /* View */,
 				DF210F2922004DE5004C1A6C /* Model */,
 				DF469EC121ECCBF300F0CE50 /* MISC */,
@@ -139,6 +142,14 @@
 				DF003A1721FB14A9003BCEAA /* UIviewExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DF301C69239F99D900DF9477 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DF301C6A239F99ED00DF9477 /* LoginVM.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		DF469EC121ECCBF300F0CE50 /* MISC */ = {
@@ -279,6 +290,7 @@
 				DF469EC521EE244100F0CE50 /* ContactsViewController.swift in Sources */,
 				DF2BC52B21DE2C240024AC21 /* AppDelegate.swift in Sources */,
 				DF2BC53E21DE316C0024AC21 /* LoginVC.swift in Sources */,
+				DF301C6B239F99ED00DF9477 /* LoginVM.swift in Sources */,
 				DF2BC54121DE32110024AC21 /* UIColorExtension.swift in Sources */,
 				DF210F2B22004DF8004C1A6C /* User.swift in Sources */,
 				DF469EC321ECCC1800F0CE50 /* GeneralConstants.swift in Sources */,
